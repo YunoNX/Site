@@ -1,32 +1,379 @@
-# Prerequisites
-*.d
+<code>
+<style>
+    /* Usar uma fonte moderna e legível */
+    @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap');
+    * {
+        font-family: 'Roboto', sans-serif;
+    }
+    /* Usar cores contrastantes e vibrantes */
+    :root {
+        --primary-color: #ff9800;
+        --secondary-color: #2196f3;
+        --background-color: #f0f0f0;
+    }
+    /* Criar um layout responsivo com flexbox */
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .header {
+        width: 100%;
+        height: 80px;
+        background-color: var(--primary-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .header h1 {
+        color: white;
+        font-size: 32px;
+        font-weight: 700;
+    }
+    .content {
+        width: 100%;
+        padding: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .content p {
+        width: 100%;
+        font-size: 18px;
+        font-weight: 300;
+        line-height: 1.5;
+    }
+    .form {
+        width: 100%;
+        max-width: 800px;
+        margin-top: 20px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .form h2 {
+        color: var(--secondary-color);
+        font-size: 24px;
+        font-weight: 700;
+    }
+    .form input[type="radio"] {
+        display: none;
+    }
+    .form label {
+        display: block;
+        margin-bottom: 10px;
+        padding-left: 30px;
+        position: relative;
+        cursor: pointer;
+    }
+    .form label:before {
+        content: "";
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 2px solid var(--secondary-color);
+        position: absolute;
+        left: 0;
+        top: 2px;
+    }
+    .form input[type="radio"]:checked + label:before {
+      background-color : var(--secondary-color);
+      border-color : white; 
+      box-shadow : inset 0 0 0 4px white; 
+      transition : all .2s ease-in-out; 
+      transform : scale(1.1); 
+      z-index : -1; 
+      position : absolute; 
+      left : -2px; 
+      top : -2px; 
+      width : calc(100% + 4px); 
+      height : calc(100% + 4px); 
+      border-radius : inherit; 
+      content : ""; 
+      display : block; 
+   } 
+   .form input[type="button"] { 
+       width : 100%; 
+       height : 40px; 
+       margin-top : 20px; 
+       border : none; 
+       border-radius : 10px; 
+       background-color : var(--primary-color); 
+       color : white; 
+       font-size : 18px; 
+       font-weight : bold; 
+   } 
+   .form input[type="button"]:hover { 
+       background-color : #ff7f00; 
+   } 
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+   /* Usar media queries para adaptar o layout para telas menores */ 
 
-# Precompiled Headers
-*.gch
-*.pch
+   @media (max-width :768 px) { 
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+      .container { 
 
-# Fortran module files
-*.mod
-*.smod
+          padding :10 px; 
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
+      } 
 
-# Executables
-*.exe
-*.out
-*.app
+      .header h1 { 
+
+          font-size :24 px; 
+
+      } 
+
+      .content p { 
+
+          font-size :16 px; 
+
+      } 
+
+      .form h2 { 
+
+          font-size :20 px; 
+
+      } 
+
+   } 
+
+   /* Adicionar alguns efeitos visuais para tornar o site mais atraente */
+
+   /* Usar um gradiente linear no fundo do cabeçalho */
+
+   .header {
+
+       background-image : linear-gradient(to right, #ff9800, #ff7f00);
+
+   }
+
+   /* Usar um gradiente radial no fundo do formulário */
+
+   .form {
+
+       background-image : radial-gradient(circle at center, #ffffff, #f0f0f0);
+
+   }
+
+   /* Usar uma animação para mostrar o feedback do usuário */
+
+   @keyframes feedback {
+
+       0% {
+
+           opacity : 0;
+
+           transform : scale(0.9);
+
+       }
+
+       50% {
+
+           opacity : 1;
+
+           transform : scale(1.1);
+
+       }
+
+       100% {
+
+           opacity : 0;
+
+           transform : scale(0.9);
+
+       }
+
+   }
+
+   #mensagem {
+
+       font-size : 20px;
+
+       font-weight : bold;
+
+       animation : feedback 2s ease-in-out;
+
+   }
+
+</style>
+</code>
+
+    </style> 
+
+    <script> 
+
+       // Esta função verifica as respostas do usuário e mostra uma mensagem de feedback
+
+       function verificarRespostas() {
+
+           // Obter os elementos do formulário
+
+           var form = document.getElementById("form");
+
+           var q1 = form.elements["q1"];
+
+           var q2 = form.elements["q2"];
+
+           var q3 = form.elements["q3"];
+
+           // Inicializar as variáveis para contar os acertos e os erros
+
+           var acertos = 0;
+
+           var erros = 0;
+
+           // Verificar a resposta da primeira pergunta
+
+           if (q1.value == "b") {
+
+               acertos++;
+
+           } else {
+
+               erros++;
+
+           }
+
+           // Verificar a resposta da segunda pergunta
+
+           if (q2.value == "b") {
+
+               acertos++;
+
+           } else {
+
+               erros++;
+
+           }
+
+           // Verificar a resposta da terceira pergunta
+
+           if (q3.value == "d") {
+
+               acertos++;
+
+           } else {
+
+               erros++;
+
+           }
+
+           // Mostrar uma mensagem de feedback de acordo com o número de acertos e erros
+
+           var mensagem = document.getElementById("mensagem");
+
+           if (acertos == 3) {
+
+               mensagem.innerHTML = "Parabéns, você acertou todas as perguntas!";
+
+               mensagem.style.color = "green";
+
+           } else if (acertos == 2) {
+
+               mensagem.innerHTML = "Você acertou duas perguntas, mas errou uma.";
+
+               mensagem.style.color = "orange";
+
+           } else if (acertos == 1) {
+
+               mensagem.innerHTML = "Você acertou uma pergunta, mas errou duas.";
+
+               mensagem.style.color = "red";
+
+           } else {
+
+               mensagem.innerHTML = "Você errou todas as perguntas. Tente novamente.";
+
+               mensagem.style.color = "red";
+
+           }
+
+       }
+
+    </script>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+
+            <h1>Profissões do Futuro</h1>
+
+        </div>
+
+        <div class="content">
+
+            <p>Este é um site simples para testar seus conhecimentos sobre as profissões do futuro, as profissões que irão desaparecer, as profissões que irão surgir e as vantagens e desvantagens disso tudo. Responda às três perguntas abaixo e veja se você está por dentro das tendências do mercado de trabalho.</p>
+
+            <form id="form">
+
+                <h2>Pergunta 1: Qual dessas profissões é considerada uma das mais promissoras para o futuro?</h2>
+
+                <input type="radio" id="a1" name="q1" value="a">
+
+                <label for="a1">A) Carteiro</label><br>
+
+                <input type="radio" id="b1" name="q1" value="b">
+
+                <label for="b1">B) Analista de Big Data</label><br>
+
+                <input type="radio" id="c1" name="q1" value="c">
+
+                <label for="c1">C) Digitador</label><br>
+
+                <input type="radio" id="d1" name="q1" value="d">
+
+                <label for="d1">D) Vendedor de porta em porta</label><br>
+
+
+
+                <h2>Pergunta 2: Qual dessas profissões pode ser substituída pela automação nos próximos anos?</h2>
+
+                <input type="radio" id="a2" name="q2" value="a">
+
+                <label for="a2">A) Engenheiro hospitalar</label><br>
+
+                <input type="radio" id="b2" name="q2" value="b">
+
+                <label for="b2">B) Caixa de banco</label><br>
+
+                <input type="radio" id="c2" name="q2" value="c">
+
+                <label for="c2">C) Especialista em sustentabilidade</label><br>
+
+                <input type="radio" id="d2" name="q2" value="d">
+
+                <label for="d2">D) Conselheiro de aposentadoria</label><br>
+
+
+
+                <h2>Pergunta 3: Qual dessas profissões é uma novidade que surgiu por causa das mudanças trazidas pela pandemia?</h2>
+
+                <input type="radio" id="a3" name="q3" value="a">
+
+                <label for="a3">A) Operador de equipamentos agrícolas</label><br>
+
+                <input type="radio" id="b3" name="q3" value="b">
+
+                <label for="b3">B) Professor e tutor EAD</label><br>
+
+                <input type="radio" id="c3" name="q3" value="c">
+
+                <label for="c3">C) Arquiteto e engenheiro 3D</label><br>
+
+                <input type="radio" id="d3" name="q3" value="d">
+                <label for="d3">D) Técnico em telemedicina</label><br>
+
+                <input type="button" value="Enviar" onclick="verificarRespostas()">
+            </form>
+            <p id="mensagem"></p>
+        </div>
+    </div>
+</body>
+</html>
+</code>
